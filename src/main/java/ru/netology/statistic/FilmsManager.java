@@ -1,8 +1,9 @@
 package ru.netology.statistic;
 
 public class FilmsManager {
-    private int limit;
+
     private String[] films = new String[0];
+    private int limit;
 
     public FilmsManager() {
         this.limit = 5;
@@ -22,20 +23,21 @@ public class FilmsManager {
     }
 
     public String[] findAll() {
+
         return films;
     }
 
     public String[] findLast() {
         int resultLength;
-        if (limit < films.length) {
-            resultLength = limit;
-        } else {
+        if (films.length < limit) {
             resultLength = films.length;
+        } else {
+            resultLength = limit;
         }
-        String[] tmp = new String[films.length];
-        for (int i = 0; i < films.length; i++) {
-            tmp[i] = films[films.length - 1 - i];
+        String[] result = new String[resultLength];
+        for (int i = 0; i < resultLength; i++) {
+            result[i] = films[films.length - 1 - i];
         }
-        return tmp;
+        return result;
     }
 }
